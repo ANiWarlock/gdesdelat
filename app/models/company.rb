@@ -2,6 +2,7 @@ class Company < ActiveRecord::Base
   belongs_to :user
   has_many :csasses, :dependent => :destroy
   has_many :services, through: :csasses
+  has_many :pictures, :dependent => :destroy
   accepts_nested_attributes_for :services
   acts_as_taggable
   acts_as_taggable_on :districts
