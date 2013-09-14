@@ -17,7 +17,7 @@
 
 <p>
   <strong>Logo:</strong>
-  <%= @company.logo %>
+  <%= image_tag @company.pictures.first.image_url.to_s if @company.pictures.any? %>
 </p>
 
 <p>

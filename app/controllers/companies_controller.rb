@@ -24,17 +24,21 @@ class CompaniesController < ApplicationController
   def new
     @company = current_user.companies.new()
     @services = Service.all.map(&:name)
+    @company.pictures.build
   end
 
   # GET /companies/1/edit
   def edit
+    @company.pictures.build unless @company.pictures.any?
   end
 
   # POST /companies
   # POST /companies.json
   def create
+    # unless @company.pictures.first.image_url.nil?
     @company = current_user.companies.new(company_params)
-
+    @company.pictures.build
+    
     respond_to do |format|
       if @company.save
         format.html { redirect_to @company, notice: 'Company was successfully created.' }
