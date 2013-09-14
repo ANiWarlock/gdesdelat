@@ -1,0 +1,11 @@
+  <%= semantic_form_for @company do |f| %>
+    <%= f.inputs :name, :phone, :address, :contact_person, :site, :notes %>
+<%= f.input :services, :as => :check_boxes  %>
+<%=  %>
+      <%=  %>
+      <%=  %>
+      <%  %>
+    <%= f.actions %>
+  <% end %>
+<hr>
+<hr>

@@ -1,0 +1,16 @@
+<h1>Выберите услугу:</h1>
+
+<table>
+  <tbody>
+    <% @services.each do |service| %>
+      <tr>
+        <td><%= link_to service.name, service %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Добавить', new_service_path unless !admin_signed_in? %>

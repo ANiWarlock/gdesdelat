@@ -1,0 +1,15 @@
+<% if user_signed_in? %>
+Hello, <%= link_to current_user.email, current_user %> !
+  <li>
+  <%= link_to('Выйти', destroy_user_session_path, :method => :delete) %>        
+  </li>
+<% else if admin_signed_in? %>
+Hello, <%= link_to "Admin", admins_path %> !
+<%= link_to "Sign out", destroy_admin_session_path, :method => :delete %>
+<% else %>
+  <li>
+  <%= link_to('Войти', new_user_session_path)  %>  
+  </li>
+<% end %>
+<% end %>
+<hr>

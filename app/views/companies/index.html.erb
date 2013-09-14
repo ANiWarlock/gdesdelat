@@ -1,0 +1,35 @@
+<h1>Listing companies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th>Logo</th>
+      <th>Contact person</th>
+      <th>Avg price</th>
+      <th>Site</th>
+      <th>Notes</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @companies.each do |company| %>
+      <tr> 
+        <td><%= company.name %></td>
+        <td><%= company.phone %></td>
+        <td><%= company.address %></td>
+        <td><%= company.logo %></td>
+        <td><%= company.contact_person %></td>
+        <td><%= company.avg_price %></td>
+        <td><%= company.site %></td>
+        <td><%= company.notes %></td>
+        <td><%= link_to 'Show', company %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

@@ -1,0 +1,9 @@
+<p>
+  <strong>Services status:</strong>
+  Payed till:
+  <ul>
+  <% @csasses.each do |cs| %>
+    <li><%= cs.service.name %> == <%= cs.subscription_until %> == <%= link_to "Продлить/оплатить", "111"  %></li>
+  <% end %>
+  </ul>
+</p>
