@@ -1,0 +1,11 @@
+  <%= semantic_form_for @company, :html => {:multipart => true} do |f| %>
+<%= f.inputs :name, :phone, :address, :contact_person, :site, :notes %>
+<%= f.input :services, :as => :check_boxes  %>
+<%= f.input :logo, :as => :file  %>
+
+      <%  %>
+    <%= f.actions %>
+  <% end %>
+
+<hr>
+<hr>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rework</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag 'formtastic' %>
+  
+  
+  <!--[if IE 6]><%= stylesheet_link_tag 'formtastic_ie6' %><![endif]-->
+  <!--[if IE 7]><%= stylesheet_link_tag 'formtastic_ie7' %><![endif]-->
+  <%= csrf_meta_tag %>
+</head>
+<body>
+<p class="notice"><%= notice %></p>                                                                                                                                                        
+<p class="alert"><%= alert %></p>  
+  <div><%= render 'devise/menu/login_items' %></div>
+  <div><%= render 'menu/models_list' %></div>
+<%= yield %>
+
+</body>
+</html>

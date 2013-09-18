@@ -1,0 +1,66 @@
+<% if @pictures.any? %>
+<% @pictures.each do |pic| %>
+<div>
+<%= image_tag(pic.image_url.to_s, :height => '200px', :border => '5px') %> 
+<div>
+<br/>
+<% end %>
+<% end %>
+<hr>
+UPLOAD
+<%= form_for @company, :html => {:multipart => true} do |f| %>
+<%= f.fields_for :pictures do |ff| %>
+      <% if ff.object.new_record? %>
+        <%= ff.file_field :image %>
+      <% else %>
+        <div>
+        <%= image_tag ff.object.image_url.to_s, :height => '200px'  %> 
+        <%= ff.check_box :_destroy%>
+        <div>
+      <% end %>
+      <% end  %>
+      <%  %>
+    <%= submit_tag("Upload") %>
+  <% end %>
+<hr>
+UPLOADIFY
+
+<input id="uploadify" name="uploadify" type="file" />
+<script type='text/javascript'>
+var uploadify_data = {
+  'AWSAccessKeyId': '<%= @uploadify_data[:access_key] %>',
+  'bucket': '<%= @uploadify_data[:bucket] %>',
+  'acl': 'private',
+  'key': '<%= @uploadify_data[:key] %>${filename}',
+  'signature': '<%= @uploadify_data[:signature] %>',
+  'policy': '<%= @uploadify_data[:policy] %>',
+  'success_action_status': '<%= @uploadify_data[:sas] %>',
+  'folder': '',
+  'Filename': ''
+}
+ 
+function uploadify_success(file, data, response) { 
+  var res_key = $(data).find("key").text();
+  alert(res_key);
+  
+  $.ajax({
+    url: "#",
+    type: "POST",
+    data: {'key_param':res_key}
+  }).success(function(data) {alert("DATA: "+data)
+});
+  
+}
+ 
+$(document).ready(function() {
+  $('#uploadify').uploadify({
+    
+    uploader:         "<%= @s3_url %>",
+    formData:         uploadify_data,
+    fileSizeLimit:    <%= @uploadify_data[:filesize] %>,
+    fileObjName:      "file", // Necessary, DO NOT remove this.
+    onUploadSuccess:  uploadify_success,
+    multi:            true
+  })
+})
+</script>

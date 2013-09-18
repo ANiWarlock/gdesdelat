@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @company.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @company.phone %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @company.address %>
+</p>
+
+<p>
+  <strong>Logo:</strong>
+  <%= image_tag @company.logo.url.to_s if @company.logo %>
+</p>
+
+<p>
+  <strong>Contact person:</strong>
+  <%= @company.contact_person %>
+</p>
+
+<p>
+  <strong>Avg price:</strong>
+  <%= @company.avg_price %>
+</p>
+
+<p>
+  <strong>Site:</strong>
+  <%= @company.site %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @company.notes %>
+</p>
+
+<p>
+  <strong>Services status:</strong><%= link_to "Управление подписками", csasses_path  %><br/>
+  Service name == Payed till:
+  <ul>
+  <% @csasses.each do |cs| %>
+    <li><%= cs.service.name %> == <%= cs.subscription_until %></li>
+  <% end %>
+  </ul>
+</p>
+
+<% if admin_signed_in? or @company.user_id==current_user.id then %>
+<%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'Back', companies_path %>
+<% end %>

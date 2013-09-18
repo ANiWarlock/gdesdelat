@@ -1,0 +1,19 @@
+<input id="uploadify" name="uploadify" type="file" />
+<script type='text/javascript'>
+  $(document).ready(function() {
+  $('#uploadify').uploadify({
+    uploader        : '/pictures',
+    cancelImg    		: 'assets/images/uploadify-cancel.png',
+    auto            : true,
+    multi           : true,
+    removeCompleted : true,
+    buttonText      : 'Select Files',
+    scriptData      : {
+     '_http_accept': 'application/javascript',
+     '_method': 'put',
+     '<%=Rails.application.config.session_options[:key] %>':
+     encodeURIComponent('<%= u cookies[Rails.application.config.session_options[:key]] %>')
+     }
+  });
+});
+</script>
