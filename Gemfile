@@ -3,6 +3,10 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
+#Sass + Bootstrap
+gem 'bootstrap-sass', '~> 2.3.2.1'
+gem "twitter-bootstrap-rails"
+
 #Auth system
 gem 'devise', branch: 'rails4'
 
@@ -11,6 +15,13 @@ gem 'formtastic'
 
 #Tags system (for districts)
 gem 'acts-as-taggable-on'
+
+
+gem "flash_cookie_session"
+gem 'uploadify-rails'
+
+gem 'remotipart', '~> 1.2'
+gem "fog"
 
 #Shitty protected attributes..
 #gem 'protected_attributes'

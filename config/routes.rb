@@ -6,7 +6,9 @@ Rework::Application.routes.draw do
   
   resources :companies
   get 'companies/:id/csasses' => 'csasses#index', :as => 'csasses'
-
+  get 'companies/:id/gallery' => 'companies#gallery'#, :as => 'gallery'
+  post 'companies/:id/gallery' => 'companies#create_up_pictures'#, :as => 'gallery'
+  
   devise_for :users
   resources :users
   get 'users/:id' => 'users#show'

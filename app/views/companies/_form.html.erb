@@ -1,12 +1,62 @@
-  <%= semantic_form_for @company, :html => {:multipart => true} do |f| %>
-    <%= f.inputs :name, :phone, :address, :contact_person, :site, :notes %>
-<%= f.input :services, :as => :check_boxes  %>
-<%= f.semantic_fields_for :pictures do |ff| %>
-      <%= ff.input :image, as: :file %>
-      <% end  %>
-      <%  %>
-    <%= f.actions %>
-  <% end %>
+<%= form_for @company, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :phone, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :phone, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :address, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :address, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :logo, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :logo, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :contact_person, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :contact_person, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :avg_price, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :avg_price, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :site, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :site, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :notes, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :notes, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :user_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :user_id, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
 
-<hr>
-<hr>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                companies_path, :class => 'btn' %>
+  </div>
+<% end %>

@@ -8,6 +8,11 @@ Bundler.require(:default, Rails.env)
 
 module Rework
   class Application < Rails::Application
+    # Add additional load paths for your own custom dirs
+        #%w(observers mailers middleware).each do |dir|
+        #  config.autoload_paths << "#{config.root}/app/#{dir}"
+        #end
+    
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

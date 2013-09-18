@@ -1,10 +1,30 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:show, :edit, :update, :destroy, :csasses_management]
+  before_action :set_company, only: [:show, :edit, :update, :destroy, :csasses_management, :gallery, :create_up_pictures]
   before_filter :authenticate_user_admin!, except: [:show, :index]
   #before_filter :user_active!
 
   # GET /companies
   # GET /companies.json
+  
+  def gallery
+    @pictures = @company.pictures
+    #@company.pictures.build
+    prepare_uploadify
+  end
+  
+  def create_up_pictures
+    @pic = @company.pictures.create
+    @pic.update_column(:image, params[:key_param])
+    
+    respond_to do |format|
+      if @pic.save
+        format.json { render json: 'success', status: :created, location: @company }
+      else
+        format.json { render json: @pic.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
   def index
     @companies = Company.all
   end
@@ -54,7 +74,8 @@ class CompaniesController < ApplicationController
   # PATCH/PUT /companies/1.json
   def update
     respond_to do |format|
-      if @company.update(company_params)
+      #p company_params
+      if @company.update(company_params[:company])
         format.html { redirect_to @company, notice: 'Company was successfully updated.' }
         format.json { head :no_content }
       else
@@ -82,7 +103,8 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit!#(:name, :phone, :address, :logo, :contact_person, :avg_price, :site, :notes, :service_id, :service_ids)
+      params.delete :utf8
+      params.permit!#(:name, :phone, :address, :logo, :contact_person, :avg_price, :site, :notes, :service_id, :service_ids)
     end    
     
     def authenticate_user_admin!
