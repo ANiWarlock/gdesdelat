@@ -9,6 +9,10 @@ Rework::Application.configure do
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
+  
+  config.serve_static_assets = true
+  config.assets.compile = true
+  config.assets.digest = true
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
@@ -20,17 +24,17 @@ Rework::Application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = false
+  #config.serve_static_assets = false
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  #config.assets.compile = false
 
   # Generate digests for assets URLs.
-  config.assets.digest = true
+  #config.assets.digest = true
 
   # Version of your assets, change this if you want to expire all your assets.
   config.assets.version = '1.0'
