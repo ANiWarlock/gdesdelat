@@ -38,13 +38,13 @@
   <strong>Услуги: </strong>
   <ul>
   <% @csasses.each do |cs| %>
-    <li><%= link_to cs.service.name, cs.service %> <%= if admin_signed_in? or @company.user_id==current_user.id then if cs.subscription_type==1 then " (оплачено до #{cs.subscription_until.strftime("%m/%d/%Y")})" end end%></li>
+    <li><%= link_to cs.service.name, cs.service %> <%= if admin_signed_in? or (user_signed_in? and @company.user_id==current_user.id) then if cs.subscription_type==1 then " (оплачено до #{cs.subscription_until.strftime("%m/%d/%Y")})" end end%></li>
   <% end %>
   </ul>
 </p>
 
 
-<% if admin_signed_in? or @company.user_id==current_user.id then %>
+<% if admin_signed_in? or (user_signed_in? and @company.user_id==current_user.id) then %>
 <div>
   <h4>
     Поднять объявление в топ!
