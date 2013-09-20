@@ -1,6 +1,7 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy, :csasses_management, :gallery, :create_up_pictures]
   before_filter :authenticate_user_admin!, except: [:show, :index]
+  before_filter :authenticate_admin!, only: :csasses_management
   #before_filter :user_active!
 
   # GET /companies

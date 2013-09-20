@@ -1,0 +1,15 @@
+  <strong>Services status:</strong>
+  Payed till:<br/>
+
+  <% @csasses.each do |cs| %>
+Company_id:<%= cs.company_id %><br/>
+Service_id:<%= cs.service_id %><br/>
+    Subscription_type:<%= cs.subscription_type %><br/>
+    Subscription_date:<%= cs.subscription_date %><br/>
+    Subscription_until:<%= cs.subscription_until %><br/><br/><br/>
+  <% end %>
+
+<%= form_tag(deligate_path, method: 'post') do %>
+  <div><%= text_field_tag 'service_id', 'Enter service id' %></div>
+  <div><%= submit_tag 'Save' %></div>
+<% end %>

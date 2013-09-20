@@ -6,7 +6,7 @@
     </blockquote>
 
 
-<%= image_tag(@company.logo_url, :height => "100px", :width => "500px", :class => "logo_show") %>
+<%= image_tag((@company.logo_url.nil? ? asset_path("sign.jpg") : @company.logo_url), :height => "100px", :width => "500px", :class => "logo_show") %>
 <br/>
 <p>
   <strong>Телефон:</strong>
@@ -45,6 +45,17 @@
 
 
 <% if admin_signed_in? or @company.user_id==current_user.id then %>
+<div>
+  <h4>
+    Поднять объявление в топ!
+  </h4>
+Ваше объявление окажется на главной странице!
+  Всего за 999р.<br/>
+<small>Пожалуйста, укажите в комментарии название вашей компании и название оплачиваемого раздела</small>
+  
+<iframe allowtransparency="true" src="https://money.yandex.ru/embed/small.xml?uid=410011974575224&amp;button-text=01&amp;button-size=m&amp;button-color=white&amp;targets=VIP_%D0%BE%D0%B1%D1%8A%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5&amp;default-sum=999&amp;mail=on" frameborder="0" height="42" scrolling="no" width="auto"></iframe>
+ 
+</div>
 <div class="form-actions">
 
   <%= link_to "Изменить", edit_company_path(@company), :class => 'btn' %>

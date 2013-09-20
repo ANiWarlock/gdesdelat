@@ -1,0 +1,9 @@
+<h3>Ремонт и дизайн помещений: </h3>
+
+<table class="table table-striped">
+  <tbody>
+    <% @service.companies.each do |company| %>
+    <tr><td><h4><%=link_to company.name, company %></h4></td></tr>
+    <% end %> 
+  </tbody>
+</table>

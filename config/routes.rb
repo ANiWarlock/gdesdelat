@@ -6,6 +6,7 @@ Rework::Application.routes.draw do
   
   resources :companies
   get 'companies/:id/csasses' => 'csasses#index', :as => 'csasses'
+  post 'companies/:id/csasses/deligate' => 'csasses#deligate', :as => 'deligate'
   get 'companies/:id/gallery' => 'companies#gallery'#, :as => 'gallery'
   post 'companies/:id/gallery' => 'companies#create_up_pictures'#, :as => 'gallery'
   
@@ -14,6 +15,7 @@ Rework::Application.routes.draw do
   get 'users/:id' => 'users#show'
   
   resources :services
+  get '/remont' => 'services#third_service', :as => 'remont'
   
   root 'services#start_page'
   # The priority is based upon order of creation: first created -> highest priority.

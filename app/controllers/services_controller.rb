@@ -7,14 +7,21 @@ class ServicesController < ApplicationController
   # GET /services
   # GET /services.json
   
-  def start_page
-    @services = Service.all
-    @companies = Company.joins(:services).where("service_id != ?", 1).limit(6)
+  def start_page  
+    @remont = Company.joins(:csasses).where("csasses.service_id = ?", 3).find(:all, :order => "csasses.subscription_type ASC", :limit => 6)
+    @companies_2 = Company.joins(:services).where("service_id != ?", 3).limit(6)
+    @companies_3 = Company.joins(:services).where("service_id != ?", 16).limit(6)
   end
   
   def index
-    @services = Service.where("id != ?",3)
+    @services = Service.where("id != ? and id != ?",3,16)
     @companies = Company.all
+  end  
+  
+  def third_service
+    @service = Service.find(3)
+    @companies = Company.all
+    render 'services/remont'
   end
 
   # GET /services/1

@@ -5,7 +5,7 @@
     <% @companies.each do |company| %>
     <tr>
       <td>
-        <%= image_tag(company.logo_url, :height => "60px", :width => "100px", :class => "logo_index") %>
+        <%= image_tag((company.logo_url.nil? ? asset_path("sign.jpg") : company.logo_url), :height => "60px", :width => "100px", :class => "logo_index") %>
       </td>
       <td>
         <h4><%=link_to company.name, company %></h4>

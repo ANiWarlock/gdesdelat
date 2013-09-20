@@ -1,5 +1,6 @@
 <%= nav_bar :brand => "ГдеСделать", :class => 'navbar-default', :responsive => true do %>
     <%= menu_group do %>
+        <%= menu_item "Ремонт и диззайн", remont_path %>
         <%= menu_item "Услуги", services_path %>
         <%= menu_item "Компании", companies_path %>
     <% end %>
