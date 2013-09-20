@@ -2,7 +2,7 @@
 <table class="table table-striped">
   <tbody>
     <% @services.each do |service| %>
-    <tr><td><h4><%=link_to "#{service.name}(#{service.companies.count})", service_path(service) %></h4></td></tr>
+    <tr><td><h4><%=link_to "#{service.name}(#{service.companies.count})", service_path(service) %></h4></td><td><%= link_to 'Изменить', edit_service_path(service) unless !admin_signed_in? %></td></tr>
     <% end %> 
   </tbody>
 </table>

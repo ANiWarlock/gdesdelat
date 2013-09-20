@@ -2,5 +2,6 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @service %> |
-<%= link_to 'Back', services_path %>
+<%= link_to 'Показать', @service %> |
+<%= link_to 'Назад', services_path %>|
+<%= link_to 'Удалить', service_path(@service), :method => 'delete' %>
