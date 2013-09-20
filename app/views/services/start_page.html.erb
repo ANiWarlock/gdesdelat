@@ -2,7 +2,7 @@
   <div class="span10">
     <div style="display: table;">
     <div class="well well-small"><%= link_to "Ремонт и дизайн помещений", service_path(1) %></div>
-      <% @services.first.companies.limit(6).each_slice(3) do |company_by_3| %>
+      <% @services.find(3).companies.limit(6).each_slice(3) do |company_by_3| %>
     <div class="row" style="display: table-row">
       <div class="well well-large" style="display: inline-block; padding-left: 20px;">
       <% company_by_3.each do |company| %>

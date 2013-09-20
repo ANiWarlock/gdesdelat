@@ -13,7 +13,7 @@ class ServicesController < ApplicationController
   end
   
   def index
-    @services = Service.all
+    @services = Service.where("id != ?",3)
     @companies = Company.all
   end
 
