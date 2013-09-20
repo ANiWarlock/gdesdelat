@@ -24,6 +24,12 @@ class ServicesController < ApplicationController
     render 'services/remont'
   end
 
+  def store
+    @service = Service.find(16)
+    @companies = Company.all
+    render 'services/store'
+  end
+
   # GET /services/1
   # GET /services/1.json
   def show

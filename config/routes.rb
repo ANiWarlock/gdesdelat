@@ -16,6 +16,7 @@ Rework::Application.routes.draw do
   
   resources :services
   get '/remont' => 'services#third_service', :as => 'remont'
+  get '/store' => 'services#store', :as => 'store'
   
   root 'services#start_page'
   # The priority is based upon order of creation: first created -> highest priority.

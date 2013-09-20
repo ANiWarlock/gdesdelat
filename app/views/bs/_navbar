@@ -3,6 +3,7 @@
         <%= menu_item "Ремонт и дизайн", remont_path %>
         <%= menu_item "Услуги", services_path %>
         <%= menu_item "Компании", companies_path %>
+        <%= menu_item "Где купить", store_path %>
     <% end %>
     
     <% if user_signed_in? %>
