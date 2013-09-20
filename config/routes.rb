@@ -15,7 +15,7 @@ Rework::Application.routes.draw do
   
   resources :services
   
-  root 'services#index'
+  root 'services#start_page'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

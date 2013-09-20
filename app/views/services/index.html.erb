@@ -1,16 +1,10 @@
-<h1>Выберите услугу:</h1>
-
-<table>
+<h3>Списог услуг:</h3>
+<table class="table table-striped">
   <tbody>
     <% @services.each do |service| %>
-      <tr>
-        <td><%= link_to service.name, service %></td>
-        
-      </tr>
-    <% end %>
+    <tr><td><h4><%=link_to "#{service.name}(#{service.companies.count})", service_path(service) %></h4></td></tr>
+    <% end %> 
   </tbody>
 </table>
-
-<br>
 
 <%= link_to 'Добавить', new_service_path unless !admin_signed_in? %>

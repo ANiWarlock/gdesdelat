@@ -1,0 +1,6 @@
+form.formtastic .input .label {
+  display: none;
+}
+form.formtastic .choices-group { 
+padding-left: 5px;
+}

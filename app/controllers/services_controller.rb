@@ -2,11 +2,19 @@ class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
   #before_filter :authenticate_user!, except: [:show, :index]
   before_filter :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
+  
 
   # GET /services
   # GET /services.json
+  
+  def start_page
+    @services = Service.all
+    @companies = Company.joins(:services).where("service_id != ?", 1).limit(6)
+  end
+  
   def index
     @services = Service.all
+    @companies = Company.all
   end
 
   # GET /services/1

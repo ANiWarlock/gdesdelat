@@ -1,9 +1,27 @@
-<%= nav_bar :brand => "UPFLAT" do %>
-    <% menu_group do %>
-        <%= menu_item "Услуги (Services)", services_path %>
-        <%= menu_item "Компании (Companies)", companies_path %>
+<%= nav_bar :brand => "ГдеСделать", :class => 'navbar-default', :responsive => true do %>
+    <%= menu_group do %>
+        <%= menu_item "Услуги", services_path %>
+        <%= menu_item "Компании", companies_path %>
     <% end %>
-    <% if current_user %>
-        <%= menu_item "Log Out", "" %>
+    
+    <% if user_signed_in? %>
+    <%= menu_group :pull => :right do %>
+      <%= drop_down "Личный кабинет" do %>
+        <%= menu_item "#{current_user.email}", user_path(current_user) %>
+        <%= menu_item 'Выйти', destroy_user_session_path, :method => "delete" %>        
+      <% end %>
+    <% end %>
+    <% else if admin_signed_in? %>
+    <%= menu_group :pull => :right do %>
+      <%= drop_down "Welcome ADMIN" do %>
+        <%= menu_item 'ADMINKA', admins_path %>
+        <%= menu_item "Выйти", destroy_admin_session_path, :method => "delete" %>        
+      <% end %>
+    <% end %>
+    <% else %>
+    <%= menu_group :pull => :right do %>
+      <%= menu_item 'Войти', new_user_session_path %>  
+     <% end %> 
+    <% end %>
     <% end %>
 <% end %>

@@ -56,7 +56,7 @@ class CompaniesController < ApplicationController
   # POST /companies.json
   def create
     # unless @company.pictures.first.image_url.nil?
-    @company = current_user.companies.new(company_params)
+    @company = current_user.companies.new(company_params[:company])
     @company.pictures.build
     
     respond_to do |format|

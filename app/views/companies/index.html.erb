@@ -1,52 +1,16 @@
-<%- model_class = Company -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-</div>
+<h3>Все компании: </h3>
+
 <table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:phone) %></th>
-      <th><%= model_class.human_attribute_name(:address) %></th>
-      <th><%= model_class.human_attribute_name(:logo) %></th>
-      <th><%= model_class.human_attribute_name(:contact_person) %></th>
-      <th><%= model_class.human_attribute_name(:avg_price) %></th>
-      <th><%= model_class.human_attribute_name(:site) %></th>
-      <th><%= model_class.human_attribute_name(:notes) %></th>
-      <th><%= model_class.human_attribute_name(:user_id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
   <tbody>
     <% @companies.each do |company| %>
-      <tr>
-        <td><%= link_to company.id, company_path(company) %></td>
-        <td><%= company.phone %></td>
-        <td><%= company.address %></td>
-        <td><%= company.logo %></td>
-        <td><%= company.contact_person %></td>
-        <td><%= company.avg_price %></td>
-        <td><%= company.site %></td>
-        <td><%= company.notes %></td>
-        <td><%= company.user_id %></td>
-        <td><%= company.name %></td>
-        <td><%=l company.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_company_path(company), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      company_path(company),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
+    <tr>
+      <td>
+        <%= image_tag(company.logo_url, :height => "60px", :width => "100px", :class => "logo_index") %>
+      </td>
+      <td>
+        <h4><%=link_to company.name, company %></h4>
+      </td>
+    </tr>
+    <% end %> 
   </tbody>
 </table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_company_path,
-            :class => 'btn btn-primary' %>

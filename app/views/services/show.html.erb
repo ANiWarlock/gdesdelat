@@ -1,9 +1,9 @@
-<p id="notice"><%= notice %></p>
-<h2>Компании работающие в данной сфере:</h2>
-<ul>
-<% @service.companies.each do |company| %>
-  <li><%= link_to company.name, company %></li>
-<% end %>
-</ul>
-<br/>
-<%= link_to 'Back', services_path %>
+<h3><%= @service.name %></h3>
+
+<table class="table table-striped">
+  <tbody>
+    <% @service.companies.each do |company| %>
+    <tr><td><h4><%=link_to company.name, company %></h4></td></tr>
+    <% end %> 
+  </tbody>
+</table>

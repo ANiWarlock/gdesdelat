@@ -1,37 +1,57 @@
 <%- model_class = Company -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
-</div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:phone) %>:</strong></dt>
-  <dd><%= @company.phone %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
-  <dd><%= @company.address %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:logo) %>:</strong></dt>
-  <dd><%= @company.logo %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:contact_person) %>:</strong></dt>
-  <dd><%= @company.contact_person %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:avg_price) %>:</strong></dt>
-  <dd><%= @company.avg_price %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:site) %>:</strong></dt>
-  <dd><%= @company.site %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:notes) %>:</strong></dt>
-  <dd><%= @company.notes %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @company.user_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @company.name %></dd>
-</dl>
+  <h2><%= @company.name %></h2>
+    <blockquote>
+      <p><%= @company.slogan %></p>
+    </blockquote>
 
+
+<%= image_tag(@company.logo_url, :height => "100px", :width => "500px", :class => "logo_show") %>
+<br/>
+<p>
+  <strong>Телефон:</strong>
+  <%= @company.phone %>
+</p>
+
+<p>
+  <strong>Контактное лицо:</strong>
+  <%= @company.contact_person %>
+</p>
+
+<p>
+  <strong>Адрес:</strong>
+  <%= @company.address %>
+</p>
+
+<p>
+  <strong>Сайт:</strong>
+  <%= @company.site %>
+</p>
+
+<p>
+  <strong>О компании:</strong>
+  <div><%= @company.notes %></div>
+</p>
+
+
+<p>
+  <strong>Услуги: </strong>
+  <ul>
+  <% @csasses.each do |cs| %>
+    <li><%= link_to cs.service.name, cs.service %> <%= if admin_signed_in? or @company.user_id==current_user.id then if cs.subscription_type==1 then " (оплачено до #{cs.subscription_until.strftime("%m/%d/%Y")})" end end%></li>
+  <% end %>
+  </ul>
+</p>
+
+
+<% if admin_signed_in? or @company.user_id==current_user.id then %>
 <div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              companies_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_company_path(@company), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+
+  <%= link_to "Изменить", edit_company_path(@company), :class => 'btn' %>
+  <%= link_to "Удалить",
               company_path(@company),
               :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :data => { :confirm => "Вы уверены?" },
               :class => 'btn btn-danger' %>
 </div>
+<% end %>

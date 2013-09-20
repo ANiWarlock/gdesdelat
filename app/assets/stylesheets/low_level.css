@@ -1,0 +1,6 @@
+legend.label {
+  display: none;
+}
+li.check_boxes, .file{
+  list-style-type: none;
+}
