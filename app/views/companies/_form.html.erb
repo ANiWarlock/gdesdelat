@@ -1,53 +1,89 @@
 <%= stylesheet_link_tag 'low_level' %>
 <%= semantic_form_for @company, :html => { :class => 'form-horizontal', :multipart => true} do |f| %>
   <div class="control-group">
-    <%= f.label "Название", :class => 'control-label' %>
+    <%= f.label "Название*", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :name, :class => 'text_field' %>
     </div>
   </div>
+
   <div class="control-group">
     <%= f.label "Слоган", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :slogan, :class => 'text_field' %>
     </div>
   </div>
+
   <div class="control-group">
-    <%= f.label "Телефон", :class => 'control-label' %>
+    <%= f.label "Режим работы", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :schedule, :class => 'text_area', :placeholder => "Пн-пт 10:00 - 20:00" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "Телефон*", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :phone, :class => 'text_field' %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label "Адрес", :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :address, :class => 'text_field' %>
-    </div>
-  </div>
+
   <div class="control-group">
     <%= f.label "Контактное лицо", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :contact_person, :class => 'text_field' %>
     </div>
   </div>
+
+  <div class="control-group">
+    <%= f.label "Мобильный телефон", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :mobile, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "Контактное лицо", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :contact_person2, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "Метро", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :metro, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "Адрес", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :address, :class => 'text_area' %>
+    </div>
+  </div>
+
   <div class="control-group">
     <%= f.label "Сайт", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :site, :class => 'text_field' %>
     </div>
   </div>
+
   <div class="control-group">
-    <%= f.label "О компании", :class => 'control-label' %>
+    <%= f.label "О нас", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_area :notes, :class => 'text_area' %>
     </div>
   </div>
+
   <div class="control-group">
     <%= f.label "Услуги", :class => 'control-label' %>
     <div class="controls">
       <%= f.input :services, :as => :check_boxes, :label => ''  %>
     </div>
   </div>
+
   <div class="control-group">
     <%= f.label "Загрузить логотип", :class => 'control-label' %>
     <div class="controls">
@@ -58,8 +94,7 @@
 
 
   <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                companies_path, :class => 'btn' %>
+    <%= f.submit "Сохранить", :class => 'btn btn-primary' %>
+    <%= link_to "Отмена", companies_path, :class => 'btn' %>
   </div>
 <% end %>

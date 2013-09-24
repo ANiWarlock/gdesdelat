@@ -8,9 +8,9 @@ class ServicesController < ApplicationController
   # GET /services.json
   
   def start_page  
-    @remont = Company.joins(:csasses).where("csasses.service_id = ?", 3).find(:all, :order => "csasses.subscription_type ASC", :limit => 6)
-    @companies_2 = Company.joins(:csasses).where("csasses.service_id != ?", 3).find(:all, :order => "csasses.subscription_type ASC", :limit => 6)
-    @companies_3 = Company.joins(:csasses).where("csasses.service_id = ?", 16).find(:all, :order => "csasses.subscription_type ASC", :limit => 6)
+    @remont = Company.joins(:csasses).where("csasses.service_id = ?", 3).order("csasses.subscription_type ASC").limit(6)
+    @companies_2 = Company.joins(:csasses).where("csasses.service_id != ?", 3).order("csasses.subscription_type ASC").limit(6)
+    @companies_3 = Company.joins(:csasses).where("csasses.service_id = ?", 16).order("csasses.subscription_type ASC").limit(6)
   end
   
   def index

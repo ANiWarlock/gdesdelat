@@ -10,5 +10,6 @@
  *
  *= require_self
  *= require uploadify
+ *= require bootstrap
  *= require_tree .
  */

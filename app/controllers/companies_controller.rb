@@ -34,6 +34,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1.json
   def show
     @csasses = @company.csasses
+    @pictures = @company.pictures
   end
 
   def csasses_management

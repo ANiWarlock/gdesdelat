@@ -7,13 +7,14 @@
   */
 
 img.logo_index {
-max-height: 80px;
-max-width: 150px;
-  width: auto;
+position: float;
 }
 
 img.logo_show {
 max-height: 100px;
 max-width: 500px;
   width: auto;
+}
+div.links img{
+height: 100px;
 }

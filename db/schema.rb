@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130920030740) do
+ActiveRecord::Schema.define(version: 20130924024508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,12 @@ ActiveRecord::Schema.define(version: 20130920030740) do
     t.integer  "user_id"
     t.string   "name"
     t.string   "slogan"
+    t.datetime "work_start"
+    t.datetime "work_end"
+    t.string   "mobile"
+    t.string   "contact_person2"
+    t.string   "metro"
+    t.string   "schedule"
   end
 
   create_table "csasses", force: true do |t|

@@ -44,5 +44,6 @@ class ApplicationController < ActionController::Base
     @uploadify_data = generate_s3_upload_data
     @s3_url = "http://#{@uploadify_data[:bucket]}.s3.amazonaws.com"
   end
+
   
 end

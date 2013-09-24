@@ -1,29 +1,21 @@
-<% if @pictures.any? %>
-<% @pictures.each do |pic| %>
-<div>
-<%= image_tag(pic.image_url.to_s, :height => '200px', :border => '5px') %> 
-<div>
-<br/>
-<% end %>
-<% end %>
-<hr>
-UPLOAD
+<h3>Фото галерея</h3>
+<% if @company.pictures.any? %>
+<div class="links">
 <%= form_for @company, :html => {:multipart => true} do |f| %>
 <%= f.fields_for :pictures do |ff| %>
-      <% if ff.object.new_record? %>
-        <%= ff.file_field :image %>
-      <% else %>
-        <div>
-        <%= image_tag ff.object.image_url.to_s, :height => '200px'  %> 
+ 
+        <%= image_tag ff.object.image_url.to_s%> 
         <%= ff.check_box :_destroy%>
-        <div>
-      <% end %>
+
       <% end  %>
-      <%  %>
-    <%= submit_tag("Upload") %>
+  <br/>
+    <%= submit_tag("Удалить") %>
   <% end %>
+</div>
+          <small>Для удаления фото, отметить нужные и нажать "удалить"</small>
 <hr>
-UPLOADIFY
+<%end%>
+<string>Добавить фотографии</strong>
 
 <input id="uploadify" name="uploadify" type="file" />
 <script type='text/javascript'>
@@ -47,7 +39,7 @@ function uploadify_success(file, data, response) {
     url: "#",
     type: "POST",
     data: {'key_param':res_key}
-  }).success(function(data) {alert("DATA: "+data)
+  }).success(function(data) {
 });
   
 }
@@ -63,4 +55,5 @@ $(document).ready(function() {
     multi:            true
   })
 })
+
 </script>

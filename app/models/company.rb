@@ -8,7 +8,8 @@ class Company < ActiveRecord::Base
   acts_as_taggable
   acts_as_taggable_on :districts
   mount_uploader :logo, LogoUploader  
-  
+  validates_presence_of :name, :phone
+  #validates_uniqueness_of :name, :message => 'Такое название уже есть'
   
   #districts_list = ['Адмиралтейский', 'Василеостровский', 'Выборгский', 'Калининский', 'Кировский', 'Колпинский', 'Красногвардейский', 'Красносельский', 'Кронштадтский', 'Курортный', 'Московский', 'Невский', 'Петроградский', 'Петродворцовый', 'Приморский', 'Пушкинский', 'Фрунзенский', 'Центральный']
   #services_list = ['', '', '', '', '', '', '', '']

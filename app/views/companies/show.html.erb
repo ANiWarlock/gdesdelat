@@ -1,3 +1,5 @@
+<div class="row">
+<div class="span10">
 <%- model_class = Company -%>
 
   <h2><%= @company.name %></h2>
@@ -29,19 +31,40 @@
 </p>
 
 <p>
-  <strong>О компании:</strong>
+  <strong>О нас:</strong>
   <div><%= @company.notes %></div>
 </p>
 
 
-<p>
-  <strong>Услуги: </strong>
-  <ul>
-  <% @csasses.each do |cs| %>
-    <li><%= link_to cs.service.name, cs.service %> <%= if admin_signed_in? or (user_signed_in? and @company.user_id==current_user.id) then if cs.subscription_type==1 then " (оплачено до #{cs.subscription_until.strftime("%m/%d/%Y")})" end end%></li>
-  <% end %>
-  </ul>
-</p>
+
+
+
+
+<strong>Портфолио:</strong>
+<div id="links" class="links">
+<% if @pictures.any? %>
+<% @pictures.each do |pic| %>
+
+  <%= link_to(image_tag(pic.image_url.to_s), pic.image_url.to_s) %> 
+
+<% end %> 
+<% end %>
+</div>
+
+  <div id="blueimp-gallery" class="blueimp-gallery">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+</div>
+
+
+
+
+
 
 
 <% if admin_signed_in? or (user_signed_in? and @company.user_id==current_user.id) then %>
@@ -64,5 +87,25 @@
               :method => 'delete',
               :data => { :confirm => "Вы уверены?" },
               :class => 'btn btn-danger' %>
+  <%= link_to "Добавить фотографии", gallery_path, :class => 'btn' %>
 </div>
 <% end %>
+</div>
+<div class="span2">
+    <div class="well well-small">VIP</div>
+    <div class="well well-medium" style="text-align:center"><h3>здесь может быть ваша реклама</h3></div>
+</div>
+
+</div>
+
+
+<script>
+document.getElementById('links').onclick = function (event) {
+    event = event || window.event;
+    var target = event.target || event.srcElement,
+        link = target.src ? target.parentNode : target,
+        options = {index: link, event: event},
+        links = this.getElementsByTagName('a');
+    blueimp.Gallery(links, options);
+};
+</script>
