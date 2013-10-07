@@ -46,12 +46,12 @@ class CompaniesController < ApplicationController
   def new
     @company = current_user.companies.new()
     @services = Service.all.map(&:name)
-    @company.pictures.build
+    #@company.pictures.build
   end
 
   # GET /companies/1/edit
   def edit
-    @company.pictures.build unless @company.pictures.any?
+    #@company.pictures.build unless @company.pictures.any?
   end
 
   # POST /companies

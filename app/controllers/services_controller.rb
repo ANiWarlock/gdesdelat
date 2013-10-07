@@ -8,13 +8,13 @@ class ServicesController < ApplicationController
   # GET /services.json
   
   def start_page  
-    @remont = Company.joins(:csasses).where("csasses.service_id = ?", 3).order("csasses.subscription_type ASC").limit(6)
-    @companies_2 = Company.joins(:csasses).where("csasses.service_id != ?", 3).order("csasses.subscription_type ASC").limit(6)
-    @companies_3 = Company.joins(:csasses).where("csasses.service_id = ?", 16).order("csasses.subscription_type ASC").limit(6)
+    @remont = Company.joins(:csasses).where("csasses.service_id = ?", 3).order("csasses.subscription_type ASC").limit(8) #Компании по ремонту
+    @services = Service.where("id != ? and id != ? and id != ? and id != ? and id != ?",3,16,17,18,19) #Прочие услуги
+    @companies_3 = Company.joins(:csasses).where("csasses.service_id = ? AND csasses.service_id = ? AND csasses.service_id = ? AND csasses.service_id = ?", 16,17,18,19).order("csasses.subscription_type ASC").limit(6) #Магазин
   end
   
   def index
-    @services = Service.where("id != ? and id != ?",3,16)
+    @services = Service.where("id != ? and id != ? and id != ? and id != ? and id != ?",3,16,17,18,19)
     @companies = Company.all
   end  
   
@@ -25,7 +25,7 @@ class ServicesController < ApplicationController
   end
 
   def store
-    @service = Service.find(16)
+    @service = Service.where("id = ? and id = ? and id = ? and id = ?",16,17,18,19)
     @companies = Company.all
     render 'services/store'
   end

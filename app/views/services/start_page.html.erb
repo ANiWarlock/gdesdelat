@@ -1,88 +1,86 @@
 <div class="row">
-  <div class="span10">
+  <div class="span9">
     <div style="display: table;">
     <div class="well well-small"><%= link_to "Ремонт и дизайн помещений", service_path(3) %></div>
-      <% @remont.each_slice(3) do |company_by_3| %>
-    <div class="row" style="display: table-row">
       <div class="well well-large" style="display: inline-block; padding-left: 20px;">
-      <% company_by_3.each do |company| %>
-        <div class="span3" style="display: inline-block">
-      <div class="media">
-        <%=link_to(image_tag((company.logo_url.nil? ? asset_path("sign.jpg") : company.logo_url), :height => "60px", :width => "60px"), company, :class=>"pull-left media-object") %>
-        <div class="media-body">
-          <h5 class="media-heading"><%= link_to company.name, company %></h5>
-          <%=company.slogan %>
+      <% @remont.each_slice(4) do |company_by_4| %>
+        <div class="row" style="display: table-row;">
+      <% company_by_4.each do |company| %>
+      <div class="span2" style="display: inline-block;">
+      <div class="spbox">
+        <div class="spbox-img">
+          <%=link_to(image_tag((company.logo_url.nil? ? asset_path("sign.jpg") : company.logo_url), :class=>"spbox-image"), company, :class=>"pull-left") %>
+        </div>
+        <div class="spbox-body">
+          <span class="spbox-name"><%= link_to company.name, company %></span>
         </div>     
       </div>
       </div>
     <% end %>
       </div>
-    </div>
+      <br/>
     <% end %>
+    </div>
     </div>
   </div>
     
-  <div class="span2">
+  <div class="span3">
     <div class="well well-small">VIP</div>
     <div class="well well-medium" style="text-align:center"><h3>здесь может быть ваша реклама</h3></div>
   </div>
 </div>
 
+
 <div class="row">
-  <div class="span10">
-    <div style="display: table;">
+  <div class="span12">
+    <div style="display: table; width:100%">
     <div class="well well-small"><%= link_to "Прочие услуги", services_path %></div>
-      <% @companies_2.each_slice(3) do |company_by_3| %>
+      <% @services.each_slice(6) do |services_by_6| %>
     <div class="row" style="display: table-row">
-      <div class="well well-large" style="display: inline-block; padding-left: 20px;">
-      <% company_by_3.each do |company| %>
-        <div class="span3" style="display: inline-block">
-      <div class="media">
-        <%=link_to(image_tag((company.logo_url.nil? ? asset_path("sign.jpg") : company.logo_url), :height => "60px", :width => "60px"), company, :class=>"pull-left media-object") %>
-        <div class="media-body">
-          <h5 class="media-heading"><%= link_to company.name, company %></h5>
-          <%=company.slogan %>
-        </div>     
-      </div>
-      </div>
+      <div class="well well-large" style="display: inline-block; box-sizing: border-box; width:100%">
+      <% services_by_6.each do |service| %>
+        <div class="span2 spservice" style="display: inline-block">
+          <%=link_to(image_tag((service.logo_url.nil? ? asset_path("sign.jpg") : service.logo_url), :class=>"spservice-image"), service, :class=>"") %>
+          <div class="spservice-body">
+            <span class="spservice-name"><%= link_to service.name, service %></span>
+          </div>     
+        </div>
     <% end %>
       </div>
     </div>
     <% end %>
     </div>
-  </div>
-    
-  <div class="span2">
-    <div class="well well-small">VIP</div>
-    <div class="well well-medium" style="text-align:center"><h3>здесь может быть ваша реклама</h3></div>
   </div>
 </div>
 
-<div class="row">
-  <div class="span10">
+
+<div class="row"> 
+    <div class="span9">
     <div style="display: table;">
     <div class="well well-small"><%= link_to "Где купить", store_path %></div>
-      <% @companies_3.each_slice(3) do |company_by_3| %>
-    <div class="row" style="display: table-row">
       <div class="well well-large" style="display: inline-block; padding-left: 20px;">
-      <% company_by_3.each do |company| %>
-        <div class="span3" style="display: inline-block">
-      <div class="media">
-        <%=link_to(image_tag((company.logo_url.nil? ? asset_path("sign.jpg") : company.logo_url), :height => "60px", :width => "60px"), company, :class=>"pull-left media-object") %>
-        <div class="media-body">
-          <h5 class="media-heading"><%= link_to company.name, company %></h5>
-          <%=company.slogan %>
+      <% @companies_3.each_slice(4) do |company_by_4| %>
+        <div class="row" style="display: table-row;">
+      <% company_by_4.each do |company| %>
+      <div class="span2" style="display: inline-block;">
+      <div class="spbox">
+        <div class="spbox-img">
+          <%=link_to(image_tag((company.logo_url.nil? ? asset_path("sign.jpg") : company.logo_url), :class=>"spbox-image"), company, :class=>"pull-left") %>
+        </div>
+        <div class="spbox-body">
+          <span class="spbox-name"><%= link_to company.name, company %></span>
         </div>     
       </div>
       </div>
     <% end %>
       </div>
-    </div>
+      <br/>
     <% end %>
+    </div>
     </div>
   </div>
     
-  <div class="span2">
+  <div class="span3">
     <div class="well well-small">VIP</div>
     <div class="well well-medium" style="text-align:center"><h3>здесь может быть ваша реклама</h3></div>
   </div>

@@ -1,8 +1,8 @@
 <div class="row">
 <div class="span10">
-<%- model_class = Company -%>
+  
 
-  <h2><%= @company.name %></h2>
+  <h2><%= @company.name %></h2><% if @company.state=="1" %><small>(Частное Лицо)</small><%end%>
     <blockquote>
       <p><%= @company.slogan %></p>
     </blockquote>
@@ -14,41 +14,52 @@
   <strong>Телефон:</strong>
   <%= @company.phone %>
 </p>
-
+  
+<% if !@company.contact_person.blank? %>
 <p>
   <strong>Контактное лицо:</strong>
   <%= @company.contact_person %>
 </p>
-
+<% end %>
+  
+<% if !@company.experience.blank? %>
+<p>
+  <strong>Опыт работы:</strong>
+  <%= @company.experience %>
+</p>
+<% end %>
+  
+<% if !@company.address.blank? %>  
 <p>
   <strong>Адрес:</strong>
   <%= @company.address %>
 </p>
-
+<% end %>
+  
+<% if !@company.site.blank? %>  
 <p>
   <strong>Сайт:</strong>
   <%= @company.site %>
 </p>
-
+<%end%>
+  
+<% if !@company.notes.blank? %>  
 <p>
   <strong>О нас:</strong>
   <div><%= @company.notes %></div>
 </p>
+<%end%>
 
 
-
-
-
-
+<% if @pictures.any? %>
 <strong>Портфолио:</strong>
 <div id="links" class="links">
-<% if @pictures.any? %>
 <% @pictures.each do |pic| %>
 
   <%= link_to(image_tag(pic.image_url.to_s), pic.image_url.to_s) %> 
 
 <% end %> 
-<% end %>
+
 </div>
 
   <div id="blueimp-gallery" class="blueimp-gallery">
@@ -60,14 +71,19 @@
     <a class="play-pause"></a>
     <ol class="indicator"></ol>
 </div>
-
-
-
-
-
+<% end %>
 
 
 <% if admin_signed_in? or (user_signed_in? and @company.user_id==current_user.id) then %>
+  
+<strong>Ваши лпдаченые подписки:</strong>    
+    <% @csasses.each do |cs| %>
+  <%= cs.service.name %>::<%= cs.subscription_until %><br/>
+    Subscription_type:<%= cs.subscription_type %><br/>
+    Subscription_date:<%= cs.subscription_date %><br/>
+    Subscription_until:<%= cs.subscription_until %><br/><br/><br/>
+  <% end %>
+  
 <div>
   <h4>
     Поднять объявление в топ!

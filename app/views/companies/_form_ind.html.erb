@@ -1,9 +1,8 @@
-<%= stylesheet_link_tag 'low_level' %>
 <%= semantic_form_for @company, :html => { :class => 'form-horizontal', :multipart => true} do |f| %>
   <div class="control-group">
     <%= f.label "Название*", :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :name, :class => 'text_field', :placeholder => "ООО Газпром" %>
+      <%= f.text_field :name, :class => 'text_field', :placeholder => "Электрик" %>
     </div>
   </div>
 
@@ -22,9 +21,16 @@
   </div>
 
   <div class="control-group">
+    <%= f.label "Опыт работы*", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :experience, :class => 'text_area', :placeholder => "5 лет в сфере отделки" %>
+    </div>
+  </div>
+
+  <div class="control-group">
     <%= f.label "Телефон*", :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :phone, :class => 'text_field', :placeholder => "8 812 123-45-67" %>
+      <%= f.text_field :phone, :class => 'text_field', :placeholder => "8 911 123-45-67" %>
     </div>
   </div>
 
@@ -36,21 +42,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label "Мобильный телефон", :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :mobile, :class => 'text_field', :placeholder => "8 911 123-45-67" %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label "Контактное лицо", :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :contact_person2, :class => 'text_field' %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label "Метро", :class => 'control-label' %>
+    <%= f.label "Метро*", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :metro, :class => 'text_field', :placeholder => "Невский проспект" %>
     </div>
@@ -64,14 +56,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label "Сайт", :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :site, :class => 'text_field', :placeholder => "gdesdelat.ru" %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label "О нас", :class => 'control-label' %>
+    <%= f.label "Обо мне", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_area :notes, :class => 'text_area' %>
     </div>
@@ -92,8 +77,8 @@
   </div>
 
 
+<%= f.input :state, :as => :hidden, :value => '1' %>
 
-<%= f.input :state, :as => :hidden, :value => '0' %>
 
 
   <div class="form-actions">

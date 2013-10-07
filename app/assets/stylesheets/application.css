@@ -12,4 +12,5 @@
  *= require uploadify
  *= require bootstrap
  *= require_tree .
+ *= require low_level
  */

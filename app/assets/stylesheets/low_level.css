@@ -1,6 +1,52 @@
 legend.label {
   display: none;
 }
+
 li.check_boxes, .file{
   list-style-type: none;
 }
+
+
+
+.spbox{
+  max-width:auto;
+}
+
+img.spbox-image{    
+  width: 150px;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+div.spbox-img{
+  display: inline-block;
+    width: 150px;
+    height: 100px;
+    overflow: hidden;
+    background: #FFFFFF;
+    outline: 1px solid #CCCCCC;
+}
+
+img.spservice-image{
+  width:140px;
+  max-width:auto;
+  height:140px;
+}
+
+.spservice{
+  max-width:auto;  
+  margin-left:25px;
+  width:160px;
+}
+
+input{
+  width:300px;
+}
+
+textarea{
+  width:300px;
+  height:90px;
+}
+
+

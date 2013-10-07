@@ -1,5 +1,14 @@
-<%- model_class = Company -%>
-<div class="page-header">
-  <h1>Коммерческая организация</h1>
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab1" data-toggle="tab"><h3>Коммерческая организация</h3></a></li>
+    <li><a href="#tab2" data-toggle="tab"><h3>Частное лицо</h3></a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+      <%= render :partial => 'form' %>
+    </div>
+    <div class="tab-pane" id="tab2">
+      <%= render :partial => 'form_ind' %>
+    </div>
+  </div>
 </div>
-<%= render :partial => 'form' %>
